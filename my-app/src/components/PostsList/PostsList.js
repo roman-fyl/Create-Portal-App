@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '../../store/api/ApiData';
 
-import "./PostsList.css"
+import "./PostsList.scss"
 
 const PostsList = () => {
  return (

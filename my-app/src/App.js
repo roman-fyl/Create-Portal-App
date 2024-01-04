@@ -8,7 +8,7 @@ import PostsList from './components/PostsList/PostsList';
 
 
 
-import './App.css';
+import './App.scss';
 
 const App = () => {
    return (
