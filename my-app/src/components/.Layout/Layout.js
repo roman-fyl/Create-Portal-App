@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import "./Layout.css"
+import "./Layout.scss"
 
 const Layout = () => {
  return (
