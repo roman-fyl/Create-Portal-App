@@ -1,64 +1,16 @@
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  font-family: Roboto sans-serif;
-}
+@import "./_reset.scss";
+@import "./_vars.scss";
 
-:focus,
-:active {
-  outline: none;
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
-
-html,
-body {
-  min-width: 320px;
-  overscroll-behavior: none;
+.main {
+  padding: 50px 0;
+  flex: 1 1 auto;
+  position: relative;
+  left: 16vw;
+  right: 0;
   overflow-x: hidden;
-}
-
-a {
-  &:focus,
-  &:active {
-    outline: none;
-  }
-  text-decoration: none;
-  color: black;
-  &:visited {
-    text-decoration: none;
-    color: black;
-  }
-  color: inherit;
-  cursor: pointer;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-input::-ms-clear {
-  display: none;
-}
-
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
-ul {
-  li {
-    list-style: none;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: inherit;
-  font-size: inherit;
 }

@@ -5,7 +5,7 @@ import "./PostsList.scss"
 
 const PostsList = () => {
  return (
-    <div>
+    <div className='main'>
     <h2>Posts</h2>
 </div>
  )
