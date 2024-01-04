@@ -1,0 +1,23 @@
+@import '../../vars';
+
+
+nav {
+    min-width: 15vw;
+    background-color: $gray;
+    display: flex;
+    flex-direction: column;
+    text-wrap: nowrap;
+    flex: 0 0 auto;
+    overscroll-behavior: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}

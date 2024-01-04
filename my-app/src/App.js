@@ -14,7 +14,7 @@ const App = () => {
    return (
    <Provider store={store}>
     <Router>
-      <div>
+      <div className='wrapper'>
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
