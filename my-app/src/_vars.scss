@@ -1,11 +1,12 @@
 $gray: rgba(216, 216, 216, 0.5);
+$gray-hover: rgba(181, 179, 179, 0.5);
 $black: rgba(15, 0, 26, 1);
 $white: #fff;
 
 $mainFont: Roboto, sans-serif;
 $font-title: 500 50px $mainFont;
 $font-medium: 400 26px $mainFont;
-$font-small: 400 20px $mainFont;
+$font-small: 400 18px $mainFont;
 $font-link: 400 14px $mainFont;
 
 
@@ -18,3 +19,6 @@ $cursor: pointer;
 $transition: .2s ease-in-out;
 
 
+// @media (min-width: $tablet) and (max-width: $desktop - 0.1px) {}
+// @media (min-width: $mobile) and (max-width: $tablet - 0.1px) {}
+// @media (min-width: $mobile) and (max-width: $desktop - 0.1px) {}

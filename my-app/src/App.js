@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store/stores/index'
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
+import Customers from './components/Customers/Customers';
 import PostsList from './components/PostsList/PostsList';
 
 
@@ -18,6 +19,9 @@ const App = () => {
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/posts" element={<PostsList />} />
+          <Route path="/posts" element={<PostsList />} />
           <Route path="/posts" element={<PostsList />} />
           
         </Routes>
