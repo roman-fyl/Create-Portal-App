@@ -4,13 +4,79 @@
 .wrapper {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 100vw;
 }
 .main {
-  padding: 50px 0;
-  flex: 1 1 auto;
+  width: 83vw;
+  padding: 50px 0px;
   position: relative;
   left: 16vw;
   right: 0;
   overflow-x: hidden;
+  border: 1px solid gray;
+}
+.container {
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+}
+.search {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+input.search__field {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid $black;
+  border-radius: 5px;
+  font-size: 1rem;
+  font: $font-small;
+  transition: all $transition;
+  &:hover {
+    cursor: $cursor;
+  }
+}
+.button {
+  &__create {
+    border: 1px solid $white;
+    background: $black;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font: $mainFont;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: $cursor;
+  transition: all $transition;
+    &:hover {
+      box-shadow: 0 0 5px gray;
+      background-color: $gray-hover;
+      color: $black;
+    }
+  }
+  &__delete {
+    border: 1px solid $white;
+    background: red;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font: $mainFont;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: $cursor;
+  transition: all $transition;
+    &:hover {
+      box-shadow: 0 0 5px red;
+      background-color: red;
+      color: $black;
+    }
+  }
 }

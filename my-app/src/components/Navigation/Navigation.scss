@@ -1,7 +1,6 @@
-@import '../../vars';
+@import "../../vars";
 
-
-nav {
+.navigation {
     min-width: 15vw;
     background-color: $gray;
     display: flex;
@@ -15,9 +14,30 @@ nav {
     top: 0;
     left: 0;
     bottom: 0;
-}
-
-ul {
+  }
+  
+  .nav-list {
     display: flex;
     flex-direction: column;
-}
+  
+    .nav-item {
+      font: $font-medium;
+      margin: 5px 0;
+      padding: 10px;
+      transition: background-color $transition;
+      cursor: $cursor;
+  
+      &:hover {
+        background-color: $gray-hover;
+      }
+  
+      @media (min-width: $mobile) and (max-width: $desktop - 0.1px) {
+        font: $font-small;
+      }
+    }
+  
+    @media (min-width: $mobile) and (max-width: $tablet - 0.1px) {
+      flex-wrap: wrap;
+    }
+  }
+  
