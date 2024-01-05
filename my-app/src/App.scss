@@ -44,6 +44,9 @@ input.search__field {
     cursor: $cursor;
   }
 }
+input[type="button"] {
+  margin-left: 10px;
+}
 .button {
   &__create {
     border: 1px solid $white;
@@ -52,10 +55,10 @@ input.search__field {
     padding: 10px;
     border-radius: 5px;
     font: $mainFont;
-  text-align: center;
-  text-transform: uppercase;
-  cursor: $cursor;
-  transition: all $transition;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: $cursor;
+    transition: all $transition;
     &:hover {
       box-shadow: 0 0 5px gray;
       background-color: $gray-hover;
@@ -69,13 +72,30 @@ input.search__field {
     padding: 10px;
     border-radius: 5px;
     font: $mainFont;
-  text-align: center;
-  text-transform: uppercase;
-  cursor: $cursor;
-  transition: all $transition;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: $cursor;
+    transition: all $transition;
     &:hover {
       box-shadow: 0 0 5px red;
       background-color: red;
+      color: $black;
+    }
+  }
+  &__cancel {
+    border: 1px solid $white;
+    background: $gray;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font: $mainFont;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: $cursor;
+    transition: all $transition;
+    &:hover {
+      box-shadow: 0 0 5px $gray;
+      background-color: $gray;
       color: $black;
     }
   }
