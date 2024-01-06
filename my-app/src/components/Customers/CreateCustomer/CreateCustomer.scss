@@ -4,6 +4,88 @@
   &__create-customer {
     position: absolute;
     display: flex;
-    
+    flex-direction: column;
+    gap: 20px;
   }
+}
+.block {
+  &__elements {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    @media (min-width: $mobile) and (max-width: $desktop - 0.1px) {
+      flex-direction: column;
+    }
+  }
+  &__element {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px 10px 0;
+    gap: 5px;
+    min-width: 49%;
+    &__comments {
+      width: 100%;
+    }
+    &__channel {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      @media (min-width: $mobile) and (max-width: $tablet - 0.1px) {
+        flex-direction: column;
+      }
+
+    }
+  }
+}
+.customer {
+  &__tags {
+    min-width: 300px;
+    min-height: 300px;
+    border: 1px solid $black;
+    border-radius: 5px;
+    padding: 10px;
+    span {
+      background-color:$gray;
+      padding: 5px;
+      margin-right: 5px;
+      position: relative;
+      &::after {
+        content: " x";
+      }
+    }
+  }
+  &__gender {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px 10px 0;
+    gap: 15px;
+  }
+  &__options {
+    display: flex;
+    flex-direction: row;
+  }
+  &__option {
+    margin-right: 15px;
+    label {
+      margin-left: 3px;
+    }
+  }
+  &__comments {
+    min-height: 150px;
+  }
+  &__buttons {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    @media (min-width: $mobile) and (max-width: $desktop - 0.1px) {
+      justify-content: space-between;
+    }
+  }
+}
+select {
+  font: $font-small;
+  border: 1px solid $gray;
 }
