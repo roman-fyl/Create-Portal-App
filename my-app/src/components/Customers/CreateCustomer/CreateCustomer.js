@@ -26,6 +26,17 @@ document.getElementById('customer_PhoneNumber').value = data.phoneNumber
   document.getElementById('customer_middleName').value = data.middleName;
   document.getElementById('customer_dateOfBirth').value =  data.dateOfBirth;
   document.getElementById('customer_countryOfLiving').value = data.countryOfLiving;
+  const selectedGenderElement = document.querySelector(`input[name="gender"][value="${data.gender}"]`);
+  if (selectedGenderElement) {
+    selectedGenderElement.checked = true;
+  } else {
+    console.log('Invalid gender value:', data.gender);
+  }
+  document.getElementById('customer_visitedCountries').value = data.visitedCountries;
+  document.getElementById('customer_preferencesToVisit').value = data.preferencesToVisit;
+  document.getElementById('customer_hobbies').value = data.hobbies;
+  document.getElementById('customer_interests').value = data.interests;
+  document.getElementById('customer_comments').value = data.comments;
 }
 
   return (
