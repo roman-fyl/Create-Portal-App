@@ -3,9 +3,10 @@ import ReceiveDataFromFields from "../ReceiveDataFromFields/ReceiveDataFromField
 
 import "./CreateCustomer.scss"
 
-const CreateCustomer = (data) => {
+const CreateCustomer = () => {
+
   const handleCreateButtonClick = () => {
-    ReceiveDataFromFields(data)
+    ReceiveDataFromFields()
   }
   useEffect(() => {
 
