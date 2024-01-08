@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import { useNavigation, navigateTo } from "../../store/actions/navigation";
+
 
 import "./Customers.scss"
 
 const Customers = () => {
+  const navigate = useNavigation();
+
+  const handleCreateButtonClick = () => {
+    navigateTo(navigate, '/create-customer')
+  }
 
  return (
     <div className='main'>
      <div className='container__header'>
     <h2>Customers(1)</h2>
     <div className='search__container'><span>Filter: Family | Country | Phone</span>
-        <input type="text" className="search__field" tabindex="1" name="search" placeholder="Search by" minlength="3" maxlength="20" required></input>
+        <input type="text" className="search__field" tabIndex="1" name="search" placeholder="Search by" minLength="3" maxLength="20" required></input>
+    </div>
+    <div>
+        <input type="button" className="button__create" value="Create" onClick={handleCreateButtonClick}></input>
     </div>
     </div>
   <ul className="customers__list">

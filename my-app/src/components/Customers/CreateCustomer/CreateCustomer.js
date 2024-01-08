@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
 import ReceiveDataFromFields from "../ReceiveDataFromFields/ReceiveDataFromFields";
 import ReadLocalStorage from "../../../store/api/ReadLocalStorage";
-
+import { useNavigation, navigateTo } from "../../../store/actions/navigation";
 import "./CreateCustomer.scss"
 
 const CreateCustomer = () => {
+  const navigate = useNavigation();
 
   const handleCreateButtonClick = () => {
     ReceiveDataFromFields()
   }
+
+  const handleCancelButtonClick = () => {
+    navigateTo(navigate, '/customers');
+  }
+
   useEffect(() => {
 const storedData = ReadLocalStorage('id');
 if (storedData) {
@@ -127,7 +133,7 @@ document.getElementById('customer_PhoneNumber').value = data.phoneNumber
             </div>
           </div>
           <div className="customer__buttons">
-            <input type="button" className="button__cancel" value="Cancel"></input>
+            <input type="button" className="button__cancel" value="Cancel" onClick={handleCancelButtonClick}></input>
             <input type="button" className="button__delete" value="Delete"></input>
             <input type="button" className="button__create" value="Create" onClick={handleCreateButtonClick}></input>
           </div>
