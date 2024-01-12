@@ -10,7 +10,11 @@
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid $black;
-
+    span {
+      display: flex;
+      align-items: start;
+      min-width: 22%;
+    }
   }
   &__item {
     width: 100%;
@@ -23,6 +27,11 @@
    transition: background-color $transition;
     &:hover {
     background-color:$gray-hover;
+    }
+    span {
+      display: flex;
+      align-items: start;
+      min-width: 22%;
     }
   }
 }

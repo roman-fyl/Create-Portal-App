@@ -14,7 +14,7 @@ const CreateCustomer = () => {
 
   const handleCreateButtonClick = () => {
     ReceiveDataFromFields();
-    // emptyFormFields();
+    emptyFormFields();
     // CleanLocalStorage(customerId);
 
   };
