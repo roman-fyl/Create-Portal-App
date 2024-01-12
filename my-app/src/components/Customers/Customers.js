@@ -7,10 +7,13 @@ import "./Customers.scss"
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
+  const [totalcustomers, setTotalCustomers] = useState([]);
+
+  
 
   useEffect(() => {
     const localStorageData = ReadLocalStorageAll();
-  
+    setTotalCustomers(localStorageData.length)
     console.log("localStorageData:", localStorageData);
   
     if (localStorageData && localStorageData.length > 0) {
@@ -32,7 +35,7 @@ const Customers = () => {
  return (
     <div className='main'>
      <div className='container__header'>
-    <h2>Customers(1)</h2>
+    <h2>Customers({totalcustomers})</h2>
     <div className='search__container'><span>Filter: Family | Country | Phone</span>
         <input type="text" className="search__field" tabIndex="1" name="search" placeholder="Search by" minLength="3" maxLength="20" required></input>
     </div>
@@ -55,7 +58,7 @@ const Customers = () => {
       <span className="name">{customer.firstName}</span>
       <span className="phone">{customer.phoneNumber}</span>
       <span className="total-tours">{customer.totalTrips}</span>
-      <span className="date">{customer.created}</span>
+      <span className="date">{customer.timing ? customer.timing.slice(0,10) : ''}</span>
     </li>
   ))
 ) : (

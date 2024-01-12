@@ -1,6 +1,7 @@
 import SaveLocalStorage from "../../../store/api/SaveLocalStorage";
 import errorFieldNotification from "../../../store/actions/errorFieldNotification";
 import { GenerateId } from "../GenerateId";
+import { DateTime } from "../../../store/actions/createDate";
 
 const extractFormData = async () => {
     const customer = {};
@@ -102,6 +103,8 @@ const extractFormData = async () => {
         customer.countryOfLiving &&
         customer.gender) {
         customer.idN = GenerateId();
+        customer.timing = DateTime();
+        customer.totalTrips = 1;
         SaveLocalStorage({ key: customer.idN, value: customer });
         console.log(customer);
         return customer;
