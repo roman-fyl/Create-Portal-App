@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import "./EditCustomer.scss"
+import "./ReadCustomer.scss"
 
-const EditCustomer = () => {
+const ReadCustomer = () => {
  return (
     <div>
     <h2>EditCustomer</h2>
@@ -10,4 +10,4 @@ const EditCustomer = () => {
  )
 };
 
-export default EditCustomer;
+export default ReadCustomer;

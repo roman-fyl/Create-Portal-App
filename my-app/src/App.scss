@@ -14,7 +14,7 @@
   left: 16vw;
   right: 0;
   overflow-x: hidden;
-  border: 1px solid gray;
+  // border: 1px solid gray;
 }
 .container {
   &__header {
@@ -104,4 +104,8 @@ input[type="button"] {
 }
 form {
   padding: 50px 0;
+}
+
+.error-notification {
+  border: 1px solid red !important;
 }

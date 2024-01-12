@@ -1,91 +1,118 @@
 import SaveLocalStorage from "../../../store/api/SaveLocalStorage";
+import errorFieldNotification from "../../../store/actions/errorFieldNotification";
+import { GenerateId } from "../GenerateId";
 
-
-const extractFormData = () => {
-
+const extractFormData = async () => {
     const customer = {};
 
-    const fieldCustomerPhone = document.getElementById('customer_PhoneNumber');
-    if(fieldCustomerPhone) {
-        customer.phoneNumber = fieldCustomerPhone.value;
+    const fieldCustomerPhone = document.getElementById("customer_PhoneNumber");
+    if (fieldCustomerPhone && fieldCustomerPhone.value) {
+        const phoneNumber = fieldCustomerPhone.value;
+        if (phoneNumber.length > 9 && typeof phoneNumber === "string") {
+            customer.phoneNumber = phoneNumber;
+        } else {
+            errorFieldNotification(fieldCustomerPhone);
+        }
     }
 
-    const fieldCustomerEmail = document.getElementById('customer_email');
-    if(fieldCustomerEmail) {
-        customer.email = fieldCustomerEmail.value;
+    const fieldCustomerEmail = document.getElementById("customer_email");
+    if (fieldCustomerEmail && fieldCustomerEmail.value) {
+        const email = fieldCustomerEmail.value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        if (emailRegex.test(email)) {
+            customer.email = email;
+        } else {
+            errorFieldNotification(fieldCustomerEmail);
+        }
+    }
+    
+    const fieldCustomerFamilyName = document.getElementById("customer_familyName");
+    if (fieldCustomerFamilyName && fieldCustomerFamilyName.value) {
+        const familyName = fieldCustomerFamilyName.value;
+        if (familyName.length > 2 && typeof familyName === 'string') {
+            customer.familyName = familyName;
+        } else {
+            errorFieldNotification(fieldCustomerFamilyName);
+        }
     }
 
-    const fieldCustomerFamilyName = document.getElementById('customer_familyName');
-    if(fieldCustomerFamilyName) {
-        customer.familyName = fieldCustomerFamilyName.value;
+    const fieldCustomerFirstName = document.getElementById("customer_firstName");
+    if (fieldCustomerFirstName && fieldCustomerFirstName.value) {
+        const firstName = fieldCustomerFirstName.value;
+        if (firstName.length > 1 && typeof firstName === 'string') {
+            customer.firstName = firstName;
+        } else {
+            errorFieldNotification(fieldCustomerFirstName);
+        }
     }
 
-    const fieldCustomerFirstName = document.getElementById('customer_firstName');
-    if(fieldCustomerFirstName) {
-        customer.firstName = fieldCustomerFirstName.value;
+    const fieldCustomerMiddleName = document.getElementById("customer_middleName");
+    if (fieldCustomerMiddleName && fieldCustomerMiddleName.value) {
+        const middleName = fieldCustomerMiddleName.value;
+        if (typeof middleName === 'string') {
+            customer.middleName = middleName;
+        } else {
+            errorFieldNotification(fieldCustomerMiddleName);
+        }
+    }
+    
+    const fieldDateOfBirth = document.getElementById("customer_dateOfBirth");
+    if (fieldDateOfBirth && fieldDateOfBirth.value) {
+        const dateOfBirth = fieldDateOfBirth.value;
+        if (dateOfBirth.length > 9 && typeof dateOfBirth === 'string') {
+            customer.dateOfBirth = dateOfBirth;
+        } else {
+            errorFieldNotification(fieldDateOfBirth);
+        }
+    }
+ 
+    const fieldCountryOfLiving = document.getElementById("customer_countryOfLiving");
+    if (fieldCountryOfLiving && fieldCountryOfLiving.value) {
+        const countryOfLiving = fieldCountryOfLiving.value;
+        if (countryOfLiving.length > 1 && typeof countryOfLiving === 'string') {
+            customer.countryOfLiving = countryOfLiving;
+        } else {
+            errorFieldNotification(fieldCountryOfLiving);
+        }
     }
 
-    const fieldCustomerMiddleName = document.getElementById('customer_middleName');
-   if(fieldCustomerMiddleName) {
-    customer.middleName = fieldCustomerMiddleName.value;
-   }
-    const fieldDateOfBirth = document.getElementById('customer_dateOfBirth');
-   if(fieldDateOfBirth) {
-    customer.dateOfBirth = fieldDateOfBirth.value;
-
-   }
-    const fieldCountryOfLiving = document.getElementById('customer_countryOfLiving');
-   if(fieldCountryOfLiving) {
-    customer.countryOfLiving = fieldCountryOfLiving.value;
-   }
-
-    const selectedGender = document.querySelector('input[name="gender"]:checked');
-    if (selectedGender) {
-        customer.gender = selectedGender.value;
+    const fieldSelectedGender = document.querySelector('input[name="gender"]:checked');
+    if (fieldSelectedGender && fieldSelectedGender.value) {
+        customer.gender = fieldSelectedGender.value;
     } else {
-        console.log('Please select Gender')
+        errorFieldNotification(fieldSelectedGender);
     }
 
-    const fieldVisitedCountries = document.getElementById('customer_visitedCountries');
-    if (fieldVisitedCountries) {
-      const visitedCountriesAll = [fieldVisitedCountries.value];
-      customer.visitedCountries = visitedCountriesAll;
+    const fieldComments = document.getElementById("customer_comments");
+    if (fieldComments && fieldComments.value) {
+        const comments = fieldComments.value;
+        if (comments.length > 1 && typeof comments === 'string') {
+            customer.comments = comments;
+        } else {
+            errorFieldNotification(fieldComments);
+        }
     }
 
-    const fieldPreferencesToVisit = document.getElementById('customer_preferencesToVisit');
-    if(fieldPreferencesToVisit) {
-    const preferencesToVisitAll = []
-    preferencesToVisitAll.push(fieldPreferencesToVisit.value)
-    customer.preferencesToVisit = preferencesToVisitAll;
+    if (customer.phoneNumber && 
+        customer.email && 
+        customer.familyName && 
+        customer.firstName && 
+        customer.dateOfBirth &&
+        customer.countryOfLiving &&
+        customer.gender) {
+        customer.idN = GenerateId();
+        SaveLocalStorage({ key: customer.idN, value: customer });
+        console.log(customer);
+        return customer;
+    } else {
+        console.log("Please fix errors");
     }
-
-    const fieldHobbies = document.getElementById('customer_hobbies');
-    if(fieldHobbies) {
-        const hobbiesAll = []
-    hobbiesAll.push(fieldHobbies.value)
-    customer.hobbies = hobbiesAll;
-    }
-
-    const fieldInterests = document.getElementById('customer_interests');
-    if(fieldInterests) {
-        const interestsAll = []
-    interestsAll.push(fieldInterests.value)
-    customer.interests = interestsAll;
-    }
-
-    customer.comments = document.getElementById('customer_comments').value;
-
-    console.log('Customer:', customer);
-
-    SaveLocalStorage({ key: 'id', value: customer });
-
-    return customer;
 };
 
 const ReceiveDataFromFields = () => {
     const customer = extractFormData();
-    SaveLocalStorage({ key: 'id', value: customer});
     return customer;
-}
+};
 
 export default ReceiveDataFromFields;

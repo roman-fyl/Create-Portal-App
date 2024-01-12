@@ -1,5 +1,6 @@
-const SaveLocalStorage = (data) => {
-    localStorage.setItem(data.key, JSON.stringify(data.value));
+const SaveLocalStorage = ({key, value}) => {
+    localStorage.setItem(key, JSON.stringify(value));
+    console.log(`Stored data: ${key}`, value )
     return;
 };
 
