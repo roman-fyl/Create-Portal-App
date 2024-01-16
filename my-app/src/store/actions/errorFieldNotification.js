@@ -1,8 +1,14 @@
 const errorFieldNotification = (element) => {
-    element.classList.add('error-notification')
+   if(element) {
+    element.className.add('error-notification')
 
     setTimeout(() => {
-        element.classList.remove('error-notification')}, 5000)
+        element.className.remove('error-notification')}, 5000)
+   }
+   else {
+    return
+   }
 }
 
 export default errorFieldNotification;
+    

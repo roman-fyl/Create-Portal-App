@@ -13,6 +13,7 @@ const Navigation = () => (
         <li className="nav-item"><Link to="/tours"><div>Tours</div></Link></li>
         <li className="nav-item"><Link to="/countries"><div>Countries</div></Link></li>
         <li className="nav-item"><Link to="/embassies"><div>Embassies</div></Link></li>
+
       </ul>
     </nav>
   );
