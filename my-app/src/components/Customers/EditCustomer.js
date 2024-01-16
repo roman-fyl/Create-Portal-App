@@ -29,15 +29,16 @@ const EditCustomer = () => {
   });
   
   const handleSaveButtonClick = () => {
-    const updatedCustomer = VerificationDataFromFields(customer.idN);
-    EmptyFormFields();
+    const updatedCustomer = VerificationDataFromFields();
+
   
     if (updatedCustomer && Object.keys(updatedCustomer).length > 0) {
       console.log('Data saved successfully:', updatedCustomer);
     } else {
       console.error('Failed to save data. Updated data is empty or undefined.');
     }
-  
+    EmptyFormFields();
+    navigate("/customers");
     console.log('DATA UPDATED');
   };
   
@@ -189,6 +190,8 @@ const EditCustomer = () => {
                   name="gender"
                   value="Male"
                   id="male"
+                  checked={formData.gender === "Male"}
+                  onChange={() => setFormData((prevData) => ({ ...prevData, gender: "Male" }))}
                 ></input>
                 <label htmlFor="male">Male</label>
               </div>
@@ -199,6 +202,8 @@ const EditCustomer = () => {
                   name="gender"
                   value="Female"
                   id="female"
+                  checked={formData.gender === "Female"}
+                  onChange={() => setFormData((prevData) => ({ ...prevData, gender: "Female" }))}
                 ></input>
                 <label htmlFor="female">Female</label>
               </div>
@@ -209,6 +214,8 @@ const EditCustomer = () => {
                   name="gender"
                   value="other"
                   id="other"
+                  checked={formData.gender === "Other"}
+                  onChange={() => setFormData((prevData) => ({ ...prevData, gender: "Other" }))}
                 ></input>
                 <label htmlFor="other">Other</label>
               </div>

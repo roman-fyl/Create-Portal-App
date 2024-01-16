@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigation, navigateTo } from "../../store/actions/navigation";
-// import { data } from "../../DataBase/customers.js";
 import ReadLocalStorageAll from "../../store/api/ReadLocalStorageAll.js";
 
 import "./Customers.scss"

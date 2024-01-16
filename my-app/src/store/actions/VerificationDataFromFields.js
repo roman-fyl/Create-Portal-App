@@ -104,7 +104,9 @@ const VerificationDataFromFields = () => {
         customer.dateOfBirth &&
         customer.countryOfLiving &&
         customer.gender) {
-        customer.idN = GenerateId();
+        const existingCustomerId = customer.idN;
+        customer.idN = GenerateId(existingCustomerId);
+        customer.idN = GenerateId(customer.idN);
         customer.timing = DateTime();
         customer.totalTrips = 1;
         SaveLocalStorage({ key: customer.idN, value: customer });
