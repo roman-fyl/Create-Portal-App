@@ -7,6 +7,8 @@ import Home from './components/Home/Home';
 import Customers from './components/Customers/Customers';
 import CreateCustomer from './components/Customers/CreateCustomer/CreateCustomer';
 import PostsList from './components/PostsList/PostsList';
+import ReadCustomer from './components/Customers/ReadCustomer/ReadCustomer';
+import EditCustomer from './components/Customers/EditCustomer';
 
 
 
@@ -22,8 +24,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/create-customer" element={<CreateCustomer />} />
-          <Route path="/posts" element={<PostsList />} />
-          <Route path="/posts" element={<PostsList />} />
+          <Route path="/profile" element={<ReadCustomer />} />
+          <Route path="/edit" element={<EditCustomer />} />
         </Routes>
       </div>
    </Router>

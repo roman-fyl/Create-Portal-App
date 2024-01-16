@@ -1,10 +1,12 @@
-import SaveLocalStorage from "../../../store/api/SaveLocalStorage";
-import errorFieldNotification from "../../../store/actions/errorFieldNotification";
-import { GenerateId } from "../GenerateId";
-import { DateTime } from "../../../store/actions/createDate";
+import errorFieldNotification from "./errorFieldNotification";
+import { GenerateId } from "../../components/Customers/GenerateId";
+import { DateTime } from "./createDate"; 
+import SaveLocalStorage from "../api/SaveLocalStorage";
 
-const extractFormData = async () => {
+const VerificationDataFromFields = () => {
+
     const customer = {};
+
 
     const fieldCustomerPhone = document.getElementById("customer_PhoneNumber");
     if (fieldCustomerPhone && fieldCustomerPhone.value) {
@@ -95,27 +97,23 @@ const extractFormData = async () => {
         }
     }
 
-    if (customer.phoneNumber && 
-        customer.email && 
-        customer.familyName && 
-        customer.firstName && 
+    if (customer.phoneNumber &&
+        customer.email &&
+        customer.familyName &&
+        customer.firstName &&
         customer.dateOfBirth &&
         customer.countryOfLiving &&
         customer.gender) {
-        customer.idN = GenerateId();
+        const existingCustomerId = customer.idN;
+        customer.idN = GenerateId(existingCustomerId);
+        customer.idN = GenerateId(customer.idN);
         customer.timing = DateTime();
         customer.totalTrips = 1;
         SaveLocalStorage({ key: customer.idN, value: customer });
-        console.log(customer);
         return customer;
-    } else {
+      } else {
         console.log("Please fix errors");
-    }
+      }
 };
 
-const ReceiveDataFromFields = () => {
-    const customer = extractFormData();
-    return customer;
-};
-
-export default ReceiveDataFromFields;
+export default VerificationDataFromFields;

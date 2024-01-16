@@ -1,41 +1,67 @@
-import React, { useState, useEffect } from "react";
-import ReadLocalStorage from "../../../store/api/ReadLocalStorage";
-import CleanLocalStorage from "../../../store/api/CleanLocalStorage";
-import { useNavigation, navigateTo } from "../../../store/actions/navigation";
-import VerificationDataFromFields from "../../../store/actions/VerificationDataFromFields"
-import PopulateForms from "../../../store/actions/PopulateForms";
-import EmptyFormFields from "../../../store/actions/EmptyFormFields";
-import "./CreateCustomer.scss";
-// import { data } from "../../../DataBase/customers";
+import { useState, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
+import { useNavigation, navigateTo } from "../../store/actions/navigation";
+import EmptyFormFields from "../../store/actions/EmptyFormFields";
+import VerificationDataFromFields from "../../store/actions/VerificationDataFromFields"
 
-const CreateCustomer = () => {
 
+const EditCustomer = () => {
+  const location = useLocation();
   const navigate = useNavigation();
+  const customer = location.state?.customerData || {};
+  
+  console.log('Customer data in EditCustomer:', customer);
 
-  const handleCreateButtonClick = () => {
-    VerificationDataFromFields();
+  const [formData, setFormData] = useState({
+    phoneNumber: '',
+    email: '',
+    familyName: '',
+    firstName: '',
+    middleName: '',
+    dateOfBirth: '',
+    countryOfLiving: '',
+    gender: '',
+    visitedCountries: '',
+    preferencesToVisit: '',
+    hobbies: '',
+    interests: '',
+    comments: ''
+  });
+  
+  const handleSaveButtonClick = () => {
+    const updatedCustomer = VerificationDataFromFields();
+
+  
+    if (updatedCustomer && Object.keys(updatedCustomer).length > 0) {
+      console.log('Data saved successfully:', updatedCustomer);
+    } else {
+      console.error('Failed to save data. Updated data is empty or undefined.');
+    }
     EmptyFormFields();
-    // CleanLocalStorage(customerId);
-
+    navigate("/customers");
+    console.log('DATA UPDATED');
   };
+  
+  
+  
 
   const handleCancelButtonClick = () => {
-    navigateTo(navigate, "/customers");
-  };
-
-  const handleEnterPress = async (event) => {
-    if (event.key === 'Enter') {
-      console.log("enter");
-      document.querySelector('input').closest.value = "";
-      return
+    if (customer) {
+      const customerData = { ...customer };
+      navigate("/profile", { state: { customerData } });
+      return;
     }
   };
 
+  useEffect(() => {
+    setFormData(customer);
+  }, [customer]);
 
-  return (
+
+ return (
     <div className="main">
       <div className="container__header__create-customer">
-        <h2>Create Customer</h2>
+        <h2>Edit Customer</h2>
       </div>
       <form action="/submit">
           <div className="block__elements">
@@ -50,6 +76,8 @@ const CreateCustomer = () => {
                 placeholder="Phone Number +1"
                 minLength="12"
                 maxLength="15"
+                value={formData.phoneNumber}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, phoneNumber: e.target.value }))}
                 required
               ></input>
             </div>
@@ -64,6 +92,8 @@ const CreateCustomer = () => {
                 placeholder="Email"
                 minLength="6"
                 maxLength="40"
+                value={formData.email}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, email: e.target.value }))}
                 required
               ></input>
             </div>
@@ -80,6 +110,8 @@ const CreateCustomer = () => {
                 placeholder="Family name"
                 minLength="3"
                 maxLength="15"
+                value={formData.familyName}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, familyName: e.target.value }))}
                 required
               ></input>
             </div>
@@ -91,9 +123,11 @@ const CreateCustomer = () => {
                 tabIndex="4"
                 id="customer_firstName"
                 name="firstName"
-                placeholder={"First name"}
+                placeholder="First name"
                 minLength="3"
                 maxLength="15"
+                value={formData.firstName}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, firstName: e.target.value }))}
                 required
               ></input>
             </div>
@@ -108,6 +142,8 @@ const CreateCustomer = () => {
                 placeholder="Middle name"
                 minLength="3"
                 maxLength="15"
+                value={formData.middleName}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, middleName: e.target.value }))}
               ></input>
             </div>
           </div>
@@ -120,6 +156,8 @@ const CreateCustomer = () => {
                 tabIndex="6"
                 id="customer_dateOfBirth"
                 name="customer_DateOfBirth"
+                value={formData.dateOfBirth}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, dateOfBirth: e.target.value }))}
                 required
               ></input>
             </div>
@@ -136,6 +174,8 @@ const CreateCustomer = () => {
                 placeholder="Country of living"
                 minLength="3"
                 maxLength="15"
+                value={formData.countryOfLiving}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, countryOfLiving: e.target.value }))}
                 required
               ></input>
             </div>
@@ -150,6 +190,8 @@ const CreateCustomer = () => {
                   name="gender"
                   value="Male"
                   id="male"
+                  checked={formData.gender === "Male"}
+                  onChange={() => setFormData((prevData) => ({ ...prevData, gender: "Male" }))}
                 ></input>
                 <label htmlFor="male">Male</label>
               </div>
@@ -160,6 +202,8 @@ const CreateCustomer = () => {
                   name="gender"
                   value="Female"
                   id="female"
+                  checked={formData.gender === "Female"}
+                  onChange={() => setFormData((prevData) => ({ ...prevData, gender: "Female" }))}
                 ></input>
                 <label htmlFor="female">Female</label>
               </div>
@@ -170,6 +214,8 @@ const CreateCustomer = () => {
                   name="gender"
                   value="other"
                   id="other"
+                  checked={formData.gender === "Other"}
+                  onChange={() => setFormData((prevData) => ({ ...prevData, gender: "Other" }))}
                 ></input>
                 <label htmlFor="other">Other</label>
               </div>
@@ -189,6 +235,8 @@ const CreateCustomer = () => {
                 id="customer_visitedCountries"
                 minLength="3"
                 maxLength="15"
+                value={formData.visitedCountries}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, visitedCountries: e.target.value }))}
                 required
               ></input>
             </div>
@@ -210,6 +258,8 @@ const CreateCustomer = () => {
                 placeholder="Add Country"
                 minLength="3"
                 maxLength="15"
+                value={formData.preferencesToVisit}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, preferencesToVisit: e.target.value }))}
                 required
               ></input>
             </div>
@@ -231,11 +281,13 @@ const CreateCustomer = () => {
                 placeholder=" Add Hobby"
                 minLength="3"
                 maxLength="15"
+                value={formData.hobbies}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, hobbies: e.target.value }))}
                 required
               ></input>
             </div>
             <div className="block__element">
-              <div className="customer__tags" id="customer_hobbies"></div>
+              <div className="customer__tags"></div>
             </div>
           </div>
           <div className="block__elements">
@@ -249,6 +301,8 @@ const CreateCustomer = () => {
                 placeholder="Add interest"
                 minLength="3"
                 maxLength="15"
+                value={formData.interests}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, interests: e.target.value }))}
                 required
               ></input>
             </div>
@@ -266,6 +320,8 @@ const CreateCustomer = () => {
                 name="customer_comments"
                 placeholder="..."
                 minLength="4"
+                value={formData.comments}
+                onChange={(e) => setFormData((prevData) => ({ ...prevData, comments: e.target.value }))}
                 required
               ></textarea>
             </div>
@@ -281,13 +337,13 @@ const CreateCustomer = () => {
             <input
               type="button"
               className="button__create"
-              value="Create"
-              onClick={handleCreateButtonClick}
+              value="Save"
+              onClick={handleSaveButtonClick}
             ></input>
           </div>
         </form>
     </div>
   );
-};
+}
 
-export default CreateCustomer;
+export default EditCustomer
