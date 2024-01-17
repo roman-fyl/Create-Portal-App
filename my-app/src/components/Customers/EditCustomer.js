@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
-import { useNavigation, navigateTo } from "../../store/actions/navigation";
+import { useNavigation } from "../../store/actions/navigation";
 import EmptyFormFields from "../../store/actions/EmptyFormFields";
 import VerificationDataFromFields from "../../store/actions/VerificationDataFromFields"
 
@@ -29,8 +29,10 @@ const EditCustomer = () => {
   });
   
   const handleSaveButtonClick = () => {
-    const updatedCustomer = VerificationDataFromFields();
-
+    const existingCustomerId = customer.idN;
+    const time = customer.timing
+    const updatedCustomer = VerificationDataFromFields(existingCustomerId, time);
+    
   
     if (updatedCustomer && Object.keys(updatedCustomer).length > 0) {
       console.log('Data saved successfully:', updatedCustomer);
