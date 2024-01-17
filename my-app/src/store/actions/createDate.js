@@ -14,8 +14,3 @@ export const DateTime = () => {
     return `${currentMonth < 10 ? '0' : ''}${currentMonth}-${currentDate < 10 ? '0' : ''}${currentDate}-${currentYear}-${currentDay}-${currentHour}-${currentMinute}-${currentSecond}-${currentMilisecond}-${currentTime}`
     
 }
-
-
-
-
-

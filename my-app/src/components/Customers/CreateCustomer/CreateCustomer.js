@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
-import ReadLocalStorage from "../../../store/api/ReadLocalStorage";
 import CleanLocalStorage from "../../../store/api/CleanLocalStorage";
 import { useNavigation, navigateTo } from "../../../store/actions/navigation";
 import VerificationDataFromFields from "../../../store/actions/VerificationDataFromFields"
-import PopulateForms from "../../../store/actions/PopulateForms";
 import EmptyFormFields from "../../../store/actions/EmptyFormFields";
 import "./CreateCustomer.scss";
-// import { data } from "../../../DataBase/customers";
 
 const CreateCustomer = () => {
 
