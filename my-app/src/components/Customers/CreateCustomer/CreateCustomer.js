@@ -27,7 +27,6 @@ const CreateCustomer = () => {
     }
   };
 
-
   return (
     <div className="main">
       <div className="container__header__create-customer">
@@ -273,7 +272,6 @@ const CreateCustomer = () => {
               value="Cancel"
               onClick={handleCancelButtonClick}
             ></input>
-            {/* <input type="button" className="button__delete" value="Delete" onClick={handleDeleteButtonClick} ></input> */}
             <input
               type="button"
               className="button__create"

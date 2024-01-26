@@ -44,7 +44,14 @@ const EditCustomer = () => {
     console.log('DATA UPDATED');
   };
   
-  
+  const handleDeleteButtonClick = () => {
+    const customerToRemove = customer.idN;
+    localStorage.removeItem(customerToRemove)
+    console.log(customerToRemove)
+    EmptyFormFields();
+    navigate("/customers");
+    return
+  }
   
 
   const handleCancelButtonClick = () => {
@@ -335,7 +342,7 @@ const EditCustomer = () => {
               value="Cancel"
               onClick={handleCancelButtonClick}
             ></input>
-            {/* <input type="button" className="button__delete" value="Delete" onClick={handleDeleteButtonClick} ></input> */}
+            <input type="button" className="button__delete" value="Delete" onClick={handleDeleteButtonClick} ></input>
             <input
               type="button"
               className="button__create"
