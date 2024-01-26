@@ -15,9 +15,11 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.phoneNumber = phoneNumber;
         } else {
             errorFieldNotification(fieldCustomerPhone);
-            // console.log(errorFieldNotification(fieldCustomerPhone))
-            // return
         }
+    }
+    else {
+        errorFieldNotification(fieldCustomerPhone);
+  
     }
 
     const fieldCustomerEmail = document.getElementById("customer_email");
@@ -33,6 +35,11 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             // return
         }
     }
+    else {
+        errorFieldNotification(fieldCustomerEmail);
+        console.log(errorFieldNotification(fieldCustomerEmail))
+        // return
+    }
 
     const fieldCustomerFamilyName = document.getElementById("customer_familyName");
     if (fieldCustomerFamilyName && fieldCustomerFamilyName.value) {
@@ -44,6 +51,10 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             console.log(errorFieldNotification(fieldCustomerFamilyName))
             // return
         }
+    } else {
+        errorFieldNotification(fieldCustomerFamilyName);
+        console.log(errorFieldNotification(fieldCustomerFamilyName))
+        // return
     }
 
     const fieldCustomerFirstName = document.getElementById("customer_firstName");
@@ -57,6 +68,11 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             // return
         }
     }
+    else {
+        errorFieldNotification(fieldCustomerFirstName);
+        console.log(errorFieldNotification(fieldCustomerFirstName))
+        // return
+    }
 
     const fieldCustomerMiddleName = document.getElementById("customer_middleName");
     if (fieldCustomerMiddleName && fieldCustomerMiddleName.value) {
@@ -66,8 +82,13 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
         } else {
             errorFieldNotification(fieldCustomerMiddleName);
             console.log(errorFieldNotification(fieldCustomerMiddleName))
-            return
+            // return
         }
+    }
+    else {
+        errorFieldNotification(fieldCustomerMiddleName);
+        console.log(errorFieldNotification(fieldCustomerMiddleName))
+        // return
     }
 
     const fieldDateOfBirth = document.getElementById("customer_dateOfBirth");
@@ -78,8 +99,13 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
         } else {
             errorFieldNotification(fieldDateOfBirth);
             console.log(errorFieldNotification(fieldDateOfBirth))
-            return
+            // return
         }
+    }
+    else {
+        errorFieldNotification(fieldDateOfBirth);
+        console.log(errorFieldNotification(fieldDateOfBirth))
+        // return
     }
 
     const fieldCountryOfLiving = document.getElementById("customer_countryOfLiving");
@@ -90,8 +116,13 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
         } else {
             errorFieldNotification(fieldCountryOfLiving);
             console.log(errorFieldNotification(fieldCountryOfLiving))
-            return
+            // return
         }
+    }
+    else {
+        errorFieldNotification(fieldCountryOfLiving);
+        console.log(errorFieldNotification(fieldCountryOfLiving))
+        // return
     }
 
     const fieldSelectedGender = document.querySelector('input[name="gender"]:checked');
@@ -100,8 +131,9 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
     } else {
         errorFieldNotification(fieldSelectedGender);
         console.log(errorFieldNotification(fieldSelectedGender))
-        return
+        // return
     }
+
 
     const fieldComments = document.getElementById("customer_comments");
     if (fieldComments && fieldComments.value) {
@@ -113,6 +145,11 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             console.log(errorFieldNotification(fieldComments))
             return
         }
+    }
+    else {
+        errorFieldNotification(fieldComments);
+        console.log(errorFieldNotification(fieldComments))
+        return
     }
 
     if (customer.phoneNumber &&
