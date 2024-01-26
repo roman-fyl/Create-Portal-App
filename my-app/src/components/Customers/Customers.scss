@@ -12,7 +12,7 @@
     border-bottom: 1px solid $black;
     span {
       display: flex;
-      align-items: start;
+      align-items: flex-start;
       min-width: 22%;
     }
   }
@@ -30,7 +30,7 @@
     }
     span {
       display: flex;
-      align-items: start;
+      align-items: flex-start;
       min-width: 22%;
     }
   }

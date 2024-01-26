@@ -1,12 +1,13 @@
 const ReadLocalStorageAll = () => {
   const keys = Object.keys(localStorage);
-  // console.log('Keys:', keys);
+  console.log('Keys:', keys);
 
   const customers = keys
   .filter(key => key !== 'lastIdCounter')
+  .filter(key => key !== 'getItem')
   .map((key) => {
     const data = localStorage.getItem(key);
-    // console.log('Parsed data:', JSON.parse(data));
+    console.log('Parsed data:', JSON.parse(data));
 
     try {
       return JSON.parse(data);

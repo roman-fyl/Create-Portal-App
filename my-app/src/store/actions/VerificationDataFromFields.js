@@ -11,10 +11,12 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
     const fieldCustomerPhone = document.getElementById("customer_PhoneNumber");
     if (fieldCustomerPhone && fieldCustomerPhone.value) {
         const phoneNumber = fieldCustomerPhone.value;
-        if (phoneNumber.length > 9 && typeof phoneNumber === "string") {
+        if (phoneNumber.length > 8 && typeof phoneNumber === "string") {
             customer.phoneNumber = phoneNumber;
         } else {
             errorFieldNotification(fieldCustomerPhone);
+            // console.log(errorFieldNotification(fieldCustomerPhone))
+            // return
         }
     }
 
@@ -27,6 +29,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.email = email;
         } else {
             errorFieldNotification(fieldCustomerEmail);
+            console.log(errorFieldNotification(fieldCustomerEmail))
+            // return
         }
     }
 
@@ -37,6 +41,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.familyName = familyName;
         } else {
             errorFieldNotification(fieldCustomerFamilyName);
+            console.log(errorFieldNotification(fieldCustomerFamilyName))
+            // return
         }
     }
 
@@ -47,6 +53,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.firstName = firstName;
         } else {
             errorFieldNotification(fieldCustomerFirstName);
+            console.log(errorFieldNotification(fieldCustomerFirstName))
+            // return
         }
     }
 
@@ -57,6 +65,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.middleName = middleName;
         } else {
             errorFieldNotification(fieldCustomerMiddleName);
+            console.log(errorFieldNotification(fieldCustomerMiddleName))
+            return
         }
     }
 
@@ -67,6 +77,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.dateOfBirth = dateOfBirth;
         } else {
             errorFieldNotification(fieldDateOfBirth);
+            console.log(errorFieldNotification(fieldDateOfBirth))
+            return
         }
     }
 
@@ -77,6 +89,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.countryOfLiving = countryOfLiving;
         } else {
             errorFieldNotification(fieldCountryOfLiving);
+            console.log(errorFieldNotification(fieldCountryOfLiving))
+            return
         }
     }
 
@@ -85,6 +99,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
         customer.gender = fieldSelectedGender.value;
     } else {
         errorFieldNotification(fieldSelectedGender);
+        console.log(errorFieldNotification(fieldSelectedGender))
+        return
     }
 
     const fieldComments = document.getElementById("customer_comments");
@@ -94,6 +110,8 @@ const VerificationDataFromFields = (existingCustomerId, time) => {
             customer.comments = comments;
         } else {
             errorFieldNotification(fieldComments);
+            console.log(errorFieldNotification(fieldComments))
+            return
         }
     }
 

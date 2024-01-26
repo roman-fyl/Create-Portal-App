@@ -1,14 +1,13 @@
 const errorFieldNotification = (element) => {
-   if(element) {
-    element.className.add('error-notification')
-
+   if (element) {
+    console.log("Element found");
+    element.classList.add('error-notification');
     setTimeout(() => {
-        element.className.remove('error-notification')}, 5000)
-   }
-   else {
-    return
+        element.classList.remove('error-notification');
+    }, 10000);
+   } else {
+    console.error("Element not found");
    }
 }
 
 export default errorFieldNotification;
-    
